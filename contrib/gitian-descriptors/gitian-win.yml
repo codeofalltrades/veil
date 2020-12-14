@@ -1,5 +1,5 @@
 ---
-name: "veil-win-1.1.1.99"
+name: "veil-win-1.1.1.1"
 enable_cache: true
 suites:
 - "bionic"
@@ -23,7 +23,7 @@ packages:
 - "python"
 - "rename"
 remotes:
-- "url": "https://github.com/Veil-Project/veil.git"
+- "url": "https://github.com/codeofalltrades/veil.git"
   "dir": "veil"
 files: []
 script: |
