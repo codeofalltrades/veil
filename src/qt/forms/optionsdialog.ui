@@ -866,6 +866,108 @@ padding:9px;
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tabWindow1">
+      <property name="styleSheet">
+       <string notr="true">padding-top:6px;</string>
+      </property>
+      <attribute name="title">
+       <string>&amp;Coin Conversion</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_Window1">
+       <item>
+        <widget class="QFrame" name="frame_12">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#frame_12{
+background-color:#10000000;
+border-radius:20px;
+padding:9px;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+            <widget class="QFrame" name="frame_11">
+              <property name="minimumSize">
+                <size>
+                  <width>0</width>
+                  <height>0</height>
+                </size>
+              </property>
+              <property name="styleSheet">
+                <string notr="true">background-color:transparent;</string>
+              </property>
+              <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_12">
+                <property name="leftMargin">
+                  <number>0</number>
+                </property>
+                <property name="topMargin">
+                  <number>0</number>
+                </property>
+                <property name="rightMargin">
+                  <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                  <number>0</number>
+                </property>
+                <item>
+                 <widget class="QCheckBox" name="basecoinConversion">
+                  <property name="toolTip">
+                   <string>When enabled the wallet will check for confirmed basecoin and send them to the wallet's stealth address.</string>
+                  </property>
+                  <property name="text">
+                   <string>&amp;Enable automatic basecoin to stealth(CT) conversion</string>
+                  </property>
+                 </widget>
+                </item>    
+                 <spacer name="verticalSpacer_12">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+              </layout>
+            </widget>
+           </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tabDisplay">
       <property name="styleSheet">
        <string notr="true">padding-top:6px;</string>

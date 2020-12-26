@@ -56,7 +56,8 @@ public:
         SpendZeroConfChange,    // bool
         Listen,                 // bool
         OptionIDRowCount,
-        HideOrphans,         // bool
+        HideOrphans,            // bool
+        BasecoinConversion,     // bool
     };
 
     void Init(bool resetSettings = false);
@@ -77,6 +78,8 @@ public:
     bool getProxySettings(QNetworkProxy& proxy) const;
     bool getCoinControlFeatures() const { return fCoinControlFeatures; }
     const QString& getOverriddenByCommandLine() { return strOverriddenByCommandLine; }
+
+    bool getBasecoinConversion() const { return fBasecoinConversion; }
 
     /* Restart flag helper */
     void setRestartRequired(bool fRequired);
