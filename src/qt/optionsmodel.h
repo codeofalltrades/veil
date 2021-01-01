@@ -72,6 +72,7 @@ public:
     /* Explicit getters */
     bool getHideTrayIcon() const { return fHideTrayIcon; }
     bool getMinimizeToTray() const { return fMinimizeToTray; }
+    //bool getBasecoinConversion() const { return fBasecoinConversion; }
     bool getMinimizeOnClose() const { return fMinimizeOnClose; }
     int getDisplayUnit() const { return nDisplayUnit; }
     QString getThirdPartyTxUrls() const { return strThirdPartyTxUrls; }
@@ -92,6 +93,7 @@ private:
     /* Qt-only settings */
     bool fHideTrayIcon;
     bool fMinimizeToTray;
+    bool fBasecoinConversion;
     bool fMinimizeOnClose;
     QString language;
     int nDisplayUnit;

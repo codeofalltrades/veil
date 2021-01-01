@@ -947,7 +947,8 @@ padding:9px;
                    <string>&amp;Enable automatic basecoin to stealth(CT) conversion</string>
                   </property>
                  </widget>
-                </item>    
+                </item>
+               <item>
                  <spacer name="verticalSpacer_12">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
