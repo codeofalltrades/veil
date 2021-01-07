@@ -72,7 +72,6 @@ public:
     /* Explicit getters */
     bool getHideTrayIcon() const { return fHideTrayIcon; }
     bool getMinimizeToTray() const { return fMinimizeToTray; }
-    //bool getBasecoinConversion() const { return fBasecoinConversion; }
     bool getMinimizeOnClose() const { return fMinimizeOnClose; }
     int getDisplayUnit() const { return nDisplayUnit; }
     QString getThirdPartyTxUrls() const { return strThirdPartyTxUrls; }
@@ -80,7 +79,7 @@ public:
     bool getCoinControlFeatures() const { return fCoinControlFeatures; }
     const QString& getOverriddenByCommandLine() { return strOverriddenByCommandLine; }
 
-    bool getBasecoinConversion() const { return fBasecoinConversion; }
+    bool getBasecoinConversion() const { return bBasecoinConversion; }
 
     /* Restart flag helper */
     void setRestartRequired(bool fRequired);
@@ -93,7 +92,6 @@ private:
     /* Qt-only settings */
     bool fHideTrayIcon;
     bool fMinimizeToTray;
-    bool fBasecoinConversion;
     bool fMinimizeOnClose;
     QString language;
     int nDisplayUnit;
@@ -102,6 +100,7 @@ private:
     /* settings that were overridden by command-line */
     QString strOverriddenByCommandLine;
     bool bHideOrphans = true;
+    bool bBasecoinConversion = false;
 
     // Add option to list of GUI options overridden through command line/config file
     void addOverriddenOption(const std::string &option);
@@ -113,6 +112,7 @@ Q_SIGNALS:
     void coinControlFeaturesChanged(bool);
     void hideTrayIconChanged(bool);
     void hideOrphansChanged(bool);
+    void coinConversionFeaturesChanged(bool);
 };
 
 #endif // BITCOIN_QT_OPTIONSMODEL_H

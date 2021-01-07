@@ -13,6 +13,7 @@
 
 #include <interfaces/node.h>
 #include <validation.h> // For DEFAULT_SCRIPTCHECK_THREADS
+#include <wallet/wallet.h>
 #include <net.h>
 #include <netbase.h>
 #include <txdb.h> // for -dbcache defaults
@@ -67,6 +68,11 @@ void OptionsModel::Init(bool resetSettings)
     if (!settings.contains("fMinimizeOnClose"))
         settings.setValue("fMinimizeOnClose", false);
     fMinimizeOnClose = settings.value("fMinimizeOnClose").toBool();
+
+    // Coin conversion
+    if (!settings.contains("bBasecoinConversion"))
+        settings.setValue("bBasecoinConversion", DEFAULT_AUTO_CONVERT_BASECOIN);
+    bBasecoinConversion = settings.value("bBasecoinConversion").toBool();
 
     // Display
     if (!settings.contains("nDisplayUnit"))
@@ -126,6 +132,11 @@ void OptionsModel::Init(bool resetSettings)
     if (!settings.contains("bHideOrphans"))
         settings.setValue("bHideOrphans", true);
     bHideOrphans = settings.value("bHideOrphans").toBool();
+
+    if (!settings.contains("bBasecoinConversion"))
+        settings.setValue("bBasecoinConversion", true);
+    if (!m_node.softSetBoolArg("-autoconvertbasecoin", settings.value("bBasecoinConversion").toBool()))
+        addOverriddenOption("-autoconvertbasecoin");
 #endif
 
     // Network
@@ -295,6 +306,9 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
         case HideOrphans:{
             return settings.value("bHideOrphans");
         }
+        case BasecoinConversion:
+            return settings.value("bBasecoinConversion");
+
 #endif
         case DisplayUnit:
             return nDisplayUnit;
@@ -417,6 +431,14 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             Q_EMIT hideOrphansChanged(bHideOrphans);
         }
         break;
+
+        case BasecoinConversion:
+             bBasecoinConversion = value.toBool();
+             if (settings.value("bBasecoinConversion") != bBasecoinConversion) {
+                settings.setValue("bBasecoinConversion", bBasecoinConversion);
+                setRestartRequired(true);
+            }
+            break;
 #endif
         case DisplayUnit:
             setDisplayUnit(value);

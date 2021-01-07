@@ -55,6 +55,10 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->hideOrphans->setChecked(settings.value("bHideOrphans", true).toBool());
     connect(ui->hideOrphans, SIGNAL(toggled(bool)), this, SLOT(onHideOrphansCheck(bool)));
 
+    ui->basecoinConversion->setChecked(settings.value("bBasecoinConversion", false).toBool());
+    connect(ui->basecoinConversion, SIGNAL(toggled(bool)), this, SLOT(onBasecoinConversionCheck(bool)));
+    //todo maybe
+
     // Show compute time
     ui->showComputeTime->setChecked(settings.value("bShowComputeTime", false).toBool());
     connect(ui->showComputeTime, SIGNAL(toggled(bool)), this, SLOT(onShowComputeTimeCheck(bool)));
@@ -117,6 +121,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->thirdPartyTxUrls->setStyleSheet(tooltipStyle);
     ui->hideOrphans->setStyleSheet(tooltipStyle);
     ui->showComputeTime->setStyleSheet(tooltipStyle);
+    ui->basecoinConversion->setStyleSheet(tooltipStyle);
 
     /* Display elements init */
     QDir translations(":translations");
@@ -201,6 +206,7 @@ void OptionsDialog::setModel(OptionsModel *_model)
     connect(ui->threadsScriptVerif, SIGNAL(valueChanged(int)), this, SLOT(showRestartWarning()));
     /* Wallet */
     connect(ui->spendZeroConfChange, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
+    connect(ui->basecoinConversion, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     /* Network */
     connect(ui->allowIncoming, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     connect(ui->connectSocks, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
@@ -221,6 +227,7 @@ void OptionsDialog::setMapper()
 
     /* Wallet */
     mapper->addMapping(ui->spendZeroConfChange, OptionsModel::SpendZeroConfChange);
+    mapper->addMapping(ui->basecoinConversion, OptionsModel::BasecoinConversion);
 
     /* Network */
     mapper->addMapping(ui->mapPortUpnp, OptionsModel::MapPortUPnP);
@@ -385,6 +392,11 @@ void OptionsDialog::onHideOrphansCheck(bool state) {
 void OptionsDialog::onShowComputeTimeCheck(bool state) {
     QSettings settings;
     settings.setValue("bShowComputeTime", state);
+    settings.sync();
+}
+void OptionsDialog::onBasecoinConversionCheck(bool state) {
+    QSettings settings;
+    settings.setValue("bBasecoinConversion", state);
     settings.sync();
 }
 

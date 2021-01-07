@@ -46,6 +46,7 @@ void WalletInit::AddWalletOptions() const
     gArgs.AddArg("-rescan", "Rescan the block chain for missing wallet transactions on startup", false, OptionsCategory::WALLET);
     gArgs.AddArg("-salvagewallet", "Attempt to recover private keys from a corrupt wallet on startup", false, OptionsCategory::WALLET);
     gArgs.AddArg("-spendzeroconfchange", strprintf("Spend unconfirmed change when sending transactions (default: %u)", DEFAULT_SPEND_ZEROCONF_CHANGE), false, OptionsCategory::WALLET);
+    gArgs.AddArg("-autoconvertbasecoin", strprintf("Automatically send basecoin to the wallet's stealth address. (default: %u)", DEFAULT_AUTO_CONVERT_BASECOIN), false, OptionsCategory::WALLET);
     gArgs.AddArg("-staking", strprintf("Enable stake mining (default: %d)", true), false, OptionsCategory::WALLET);
     gArgs.AddArg("-txconfirmtarget=<n>", strprintf("If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)", DEFAULT_TX_CONFIRM_TARGET), false, OptionsCategory::WALLET);
     gArgs.AddArg("-upgradewallet", "Upgrade wallet to latest format on startup", false, OptionsCategory::WALLET);
