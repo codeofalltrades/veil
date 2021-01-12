@@ -436,7 +436,7 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
              bBasecoinConversion = value.toBool();
              if (settings.value("bBasecoinConversion") != bBasecoinConversion) {
                 settings.setValue("bBasecoinConversion", bBasecoinConversion);
-                setRestartRequired(true);
+                //TODO: Q_EMIT
             }
             break;
 #endif

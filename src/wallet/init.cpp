@@ -23,6 +23,7 @@
 void WalletInit::AddWalletOptions() const
 {
     gArgs.AddArg("-addresstype", strprintf("What type of addresses to use (\"legacy\", \"p2sh-segwit\", or \"bech32\", default: \"%s\")", FormatOutputType(DEFAULT_ADDRESS_TYPE)), false, OptionsCategory::WALLET);
+    gArgs.AddArg("-autoconvertbasecoin", strprintf("Automatically send basecoin to the wallet's stealth address. (default: %u)", DEFAULT_AUTO_CONVERT_BASECOIN), false, OptionsCategory::WALLET);
     gArgs.AddArg("-avoidpartialspends", strprintf(_("Group outputs by address, selecting all or none, instead of selecting on a per-output basis. Privacy is improved as an address is only used once (unless someone sends to it after spending from it), but may result in slightly higher fees as suboptimal coin selection may result due to the added limitation (default: %u)"), DEFAULT_AVOIDPARTIALSPENDS), false, OptionsCategory::WALLET);
     gArgs.AddArg("-backupzerocoin", "Enable automatic backups of zerocoin", false, OptionsCategory::WALLET);
     gArgs.AddArg("-changetype", "What type of change to use (\"legacy\", \"p2sh-segwit\", or \"bech32\"). Default is same as -addresstype, except when -addresstype=p2sh-segwit a native segwit output is used when sending to a native segwit address)", false, OptionsCategory::WALLET);
@@ -46,7 +47,6 @@ void WalletInit::AddWalletOptions() const
     gArgs.AddArg("-rescan", "Rescan the block chain for missing wallet transactions on startup", false, OptionsCategory::WALLET);
     gArgs.AddArg("-salvagewallet", "Attempt to recover private keys from a corrupt wallet on startup", false, OptionsCategory::WALLET);
     gArgs.AddArg("-spendzeroconfchange", strprintf("Spend unconfirmed change when sending transactions (default: %u)", DEFAULT_SPEND_ZEROCONF_CHANGE), false, OptionsCategory::WALLET);
-    gArgs.AddArg("-autoconvertbasecoin", strprintf("Automatically send basecoin to the wallet's stealth address. (default: %u)", DEFAULT_AUTO_CONVERT_BASECOIN), false, OptionsCategory::WALLET);
     gArgs.AddArg("-staking", strprintf("Enable stake mining (default: %d)", true), false, OptionsCategory::WALLET);
     gArgs.AddArg("-txconfirmtarget=<n>", strprintf("If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)", DEFAULT_TX_CONFIRM_TARGET), false, OptionsCategory::WALLET);
     gArgs.AddArg("-upgradewallet", "Upgrade wallet to latest format on startup", false, OptionsCategory::WALLET);

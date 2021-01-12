@@ -657,6 +657,13 @@ int main(int argc, char *argv[])
         nPreferredDenom = tempPref;
     }
 
+#ifdef ENABLE_WALLET
+    if(gArgs.IsArgSet("-autoconvertbasecoin")) {
+        bool bBasecoinConversion = gArgs.GetArg("-autoconvertbasecoin", false);
+        settings->setValue("bBasecoinConversion", bBasecoinConversion);
+    }
+#endif
+
     // Now that the QApplication is setup and we have parsed our parameters, we can set the platform style
     app.setupPlatformStyle();
 
