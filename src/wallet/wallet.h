@@ -1449,6 +1449,12 @@ bool StartAutoSpend();
 void LinkAutoSpendThreadGroup(void* pthreadgroup);
 void SetAutoSpendParameters(const int& nCount, const int& nDenom, const std::string& strAddress);
 
+void AutoSpendBasecoin();
+void StopBasecoinAutoSpend();
+bool StartBasecoinAutoSpend();
+void LinkBasecoinAutoSpendThreadGroup(void* pthreadgroup);
+void SetBasecoinAutoSpendParameters(const std::string& strAddress);
+
 // Calculate the size of the transaction assuming all signatures are max size
 // Use DummySignatureCreator, which inserts 71 byte signatures everywhere.
 // NOTE: this requires that all inputs must be in mapWallet (eg the tx should
