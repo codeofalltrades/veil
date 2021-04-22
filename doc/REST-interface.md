@@ -49,6 +49,24 @@ Only supports JSON as output format.
 * softforks : (array) status of softforks in progress
 * vip9_softforks : (object) status of VIP9 softforks in progress
 
+
+#### Mining Information
+`GET /rest/mininginfo.json`
+
+Returns a json object containing mining-related information.
+Only supports JSON as output format.
+* blocks : (numeric) The current block
+* currentblockweight : (numeric) The last block weight
+* currentblocktx : (numeric) The last block transaction
+* algorithm : (string) Algorithm set to mine (progpow, randomx, sha256d)
+* difficulty : (numeric) The current difficulty
+* networkhashps : (numeric) The network hashes per second
+* hashspeed : (numeric) The system hashes per second
+* pooledtx : (numeric) The size of the mempool
+* chain : (string) current network name as defined in BIP70 (main, test, regtest)
+* warnings : (string) any network and blockchain warnings
+
+
 #### Memory pool
 `GET /rest/mempool/info.json`
 

@@ -13,6 +13,7 @@
 #include <httpserver.h>
 #include <rpc/blockchain.h>
 #include <rpc/server.h>
+#include <rpc/mining.cpp>
 #include <streams.h>
 #include <sync.h>
 #include <txmempool.h>
@@ -292,6 +293,32 @@ static bool rest_chaininfo(HTTPRequest* req, const std::string& strURIPart)
     default: {
         return RESTERR(req, HTTP_NOT_FOUND, "output format not found (available: json)");
     }
+    }
+}
+
+// A bit of a hack - dependency on a function defined in rpc/blockchain.cpp
+UniValue getmininginfo(const JSONRPCRequest& request);
+
+static bool rest_mininginfo(HTTPRequest* req, const std::string& strURIPart)
+{
+    if (!CheckWarmup(req))
+        return false;
+    std::string param;
+    const RetFormat rf = ParseDataFormat(param, strURIPart);
+
+    switch (rf) {
+        case RetFormat::JSON: {
+            JSONRPCRequest jsonRequest;
+            jsonRequest.params = UniValue(UniValue::VARR);
+            UniValue miningInfoObject = getmininginfo(jsonRequest);
+            std::string strJSON = miningInfoObject.write() + "\n";
+            req->WriteHeader("Content-Type", "application/json");
+            req->WriteReply(HTTP_OK, strJSON);
+            return true;
+        }
+        default: {
+            return RESTERR(req, HTTP_NOT_FOUND, "output format not found (available: json)");
+        }
     }
 }
 
@@ -584,6 +611,7 @@ static const struct {
       {"/rest/block/notxdetails/", rest_block_notxdetails},
       {"/rest/block/", rest_block_extended},
       {"/rest/chaininfo", rest_chaininfo},
+      {"/rest/mininginfo", rest_mininginfo},
       {"/rest/mempool/info", rest_mempool_info},
       {"/rest/mempool/contents", rest_mempool_contents},
       {"/rest/headers/", rest_headers},
