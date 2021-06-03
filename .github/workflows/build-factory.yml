@@ -63,7 +63,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --enable-tests --with-comparison-tool=no --prefix=$(realpath depends/x86_64-pc-linux-gnu)
+        ./configure --disable-jni --enable-tests --with-comparison-tool=no --prefix=$(realpath depends/x86_64-pc-linux-gnu) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
@@ -105,7 +105,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/x86_64-w64-mingw32)
+        ./configure --disable-jni --prefix=$(realpath depends/x86_64-w64-mingw32) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
@@ -151,7 +151,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/x86_64-apple-darwin14)
+        ./configure --disable-jni --prefix=$(realpath depends/x86_64-apple-darwin14) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
@@ -190,7 +190,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/aarch64-linux-gnu)
+        ./configure --disable-jni --prefix=$(realpath depends/aarch64-linux-gnu) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
@@ -233,7 +233,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/i686-w64-mingw32)
+        ./configure --disable-jni --prefix=$(realpath depends/i686-w64-mingw32) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
@@ -271,7 +271,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/arm-linux-gnueabihf) --enable-glibc-back-compat --enable-reduce-exports LDFLAGS=-static-libstdc++
+        ./configure --disable-jni --prefix=$(realpath depends/arm-linux-gnueabihf) --enable-glibc-back-compat --enable-reduce-exports CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11' LDFLAGS=-static-libstdc++
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
@@ -313,7 +313,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/i686-pc-linux-gnu)
+        ./configure --disable-jni --prefix=$(realpath depends/i686-pc-linux-gnu) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
