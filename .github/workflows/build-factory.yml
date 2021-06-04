@@ -105,7 +105,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/x86_64-w64-mingw32) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
+        ./configure --disable-jni --prefix=$(realpath depends/x86_64-w64-mingw32) CFLAGS='-march=native -fno-asynchronous-unwind-table' CXXFLAGS='-march=native -fno-asynchronous-unwind-table' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
@@ -151,7 +151,7 @@ jobs:
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Build Veil
       run: |
-        ./configure --disable-jni --prefix=$(realpath depends/x86_64-apple-darwin14) CFLAGS='-march=native' CXXFLAGS='-march=native' CC='clang' CXX='clang++ -std=c++11'
+        ./configure --disable-jni --prefix=$(realpath depends/x86_64-apple-darwin14) CFLAGS='-march=native -fno-asynchronous-unwind-table' CXXFLAGS='-march=native -fno-asynchronous-unwind-table' CC='clang' CXX='clang++ -std=c++11'
         make -j$(nproc)
       working-directory: ${{ env.SOURCE_ARTIFACT }}
     - name: Prepare Files for Artifact
