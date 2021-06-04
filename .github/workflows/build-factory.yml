@@ -107,7 +107,7 @@ jobs:
       run: |
         sudo apt install -y software-properties-common
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
-        sudo apt install -y cpp-11 libgcc-11-dev libstdc++-11-dev gcc-11 g++-11 gcc-11-locales g++-11-multilib gcc-11-doc libstdc++6-11-dbg gcc-11-multilib libgcc-s1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg libasan6-dbg liblsan0-dbg libtsan0-dbg libubsan1-dbg libhwasan0-dbg libquadmath0-dbg libstdc++-11-doc
+        sudo apt install -y cpp-11 libgcc-11-dev libstdc++-11-dev gcc-11 g++-11 gcc-11-locales g++-11-multilib gcc-11-doc libstdc++6-11-dbg gcc-11-multilib libgcc-s1-dbg libstdc++-11-doc
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 90 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
         sudo update-alternatives --set gcc /usr/bin/gcc-11
         sudo update-alternatives --set g++ /usr/bin/g++-11
